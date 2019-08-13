@@ -1,0 +1,15 @@
+.centered_div {
+	text-align: center;
+}
+
+.vouch_button {
+	margin: 20px 0px;
+}
+
+.vouch_button > form > input {
+    background: #3e3838;
+    padding: 20px;
+    border: none;
+    border-radius: 3%;
+    color: #ffffff;
+}

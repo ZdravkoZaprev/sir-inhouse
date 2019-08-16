@@ -10,7 +10,9 @@ $getUserByVouchRequest = $database->getVouchRequestBySteamId($steam_id);
 if (!empty($getUserByVouchRequest)) {
 	// user already reqeuested vouch
 	//redirect back to league and die
-	// die();
+	//
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	die();
 }
 
 //create vouch request

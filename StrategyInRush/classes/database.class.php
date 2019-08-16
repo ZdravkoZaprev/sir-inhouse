@@ -96,7 +96,7 @@ class database
 
 		$current_time = date('Y-m-d H:i:s');
 
-		$sql = "INSERT INTO `vouch_requests` (`steam_id`, `username`, `request_date`, `reqeuest_count`) 
+		$sql = "INSERT INTO `vouch_requests` (`steam_id`, `username`, `request_date`, `request_count`) 
 		VALUES ('$steam_id', '$username', '$current_time', '1')"; // TODO: change requests_count
 
 		$request = $this->connection->query($sql);
@@ -106,7 +106,20 @@ class database
 
 	public function getAllVouchRequests()
 	{
+		$sql = "SELECT steam_id, username FROM vouch_requests";
+		$request = $this->connection->query($sql);
 
+		$result = array();
+		if ($request->num_rows > 0) {
+    		// output data of each row
+	    while($row = $request->fetch_assoc()) {
+		    	$result[$row['steam_id']] = $row['username'];
+		    }
+		} else {
+		    return;
+		}
+
+		return $result;
 	}
 
 	public function getVouchRequestBySteamId($steam_id)
